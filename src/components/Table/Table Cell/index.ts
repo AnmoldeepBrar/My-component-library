@@ -1,1 +1,2 @@
-export { default } from "./Table_cell";
+export { default } from './TableCell';
+export * from './TableCell.types';

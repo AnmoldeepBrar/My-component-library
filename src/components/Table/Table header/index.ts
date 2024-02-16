@@ -1,1 +1,2 @@
-export { default } from "./Table_header";
+export { default } from "./TableHeader";
+export * from './TableHeader.types';

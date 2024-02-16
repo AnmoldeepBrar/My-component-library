@@ -1,26 +1,35 @@
-import React, { useState } from "react";
+import React from 'react';
+import styled from 'styled-components';
+import { action } from '@storybook/addon-actions';
 
-export interface DropdownProps {
+export interface DropdownProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   options: string[];
-  onSelect: (option: string) => void;
+  backgroundColor?: string;
+  disabled?: boolean;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+const StyledDropdown = styled.select<DropdownProps>`
+  padding: 10px;
+  background-color: ${(props) => (props.disabled ? '#ccc' : props.backgroundColor || '#ffffff')};
+  color: ${(props) => (props.disabled ? '#888888' : '#000000')};
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+`;
 
-  const handleSelect = (option: string) => {
-    setSelectedOption(option);
-    onSelect(option);
+const Dropdown: React.FC<DropdownProps> = ({ options, backgroundColor, disabled, ...rest }) => {
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    action('Dropdown Clicked')(event.target.value);
   };
 
   return (
-    <select value={selectedOption || undefined} onChange={(e) => handleSelect(e.target.value)}>
+    <StyledDropdown {...rest} backgroundColor={backgroundColor} disabled={disabled} onChange={handleChange} options={options}>
       {options.map((option, index) => (
         <option key={index} value={option}>
           {option}
         </option>
       ))}
-    </select>
+    </StyledDropdown>
   );
 };
 

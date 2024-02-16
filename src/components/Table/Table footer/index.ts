@@ -1,1 +1,2 @@
-export { default } from "./Table_footer";
+export { default } from './TableFooter';
+export * from './TableFooter.types';
