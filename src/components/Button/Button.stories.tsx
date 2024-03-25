@@ -1,10 +1,10 @@
 // button.stories.tsx
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import Button, { ButtonProps } from './Button'; // Import ButtonProps from Button.types
+import React from "react";
+import { Story, Meta } from "@storybook/react";
+import Button, { ButtonProps } from "./Button"; // Import ButtonProps from Button.types
 
 export default {
-  title: 'Button',
+  title: "Button",
   component: Button,
 } as Meta;
 
@@ -12,12 +12,11 @@ const Template: Story<ButtonProps> = (args) => <Button {...args} />; // Specify 
 
 export const Default = Template.bind({});
 Default.args = {
-  text: 'Click me',
+  text: "Click me",
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  text: 'Disabled Button',
+  text: "Disabled Button",
   disabled: true,
 };
-
