@@ -16,7 +16,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm test && list"
+      "pre-commit": "npm run lint && npm test && prettier --write ."
     }
   },
   "author": "Anmol",
